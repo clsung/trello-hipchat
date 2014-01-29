@@ -165,6 +165,14 @@ def notify(board_id, list_names, room_id):
 
                 msg(room_id, "%s moved card <a href=\"%s\">%s</a> from list \"%s\" to list \"%s\"" % (
                     author, card_url, card_name, n1, n2))
+            elif "desc" in A["data"]["old"] and "desc" in A["data"]["card"]:
+                n1 = A["data"]["old"]["desc"]
+                n2 = A["data"]["card"]["desc"]
+                n1 = ESC(n1)
+                n2 = ESC(n2)
+                msg(room_id, "%s update card <a href=\"%s\">%s</a> description from \"%s\" to \"%s\"" % (
+                    author, card_url, card_name, n1, n2))
+
 
         elif A["type"] == "updateCheckItemStateOnCard":
             card_id_short = A["data"]["card"]["idShort"]
